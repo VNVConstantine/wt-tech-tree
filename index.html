@@ -27,14 +27,29 @@
       <div class="filter-block grow">
         <input id="search" type="search" placeholder="Search by name, rank, notes…" />
       </div>
+      <div class="filter-block">
+        <label>View</label>
+        <div class="view-toggle">
+          <button id="viewList" class="tab active">List</button>
+          <button id="viewTree" class="tab">Tree</button>
+        </div>
+      </div>
     </div>
   </header>
 
   <main>
     <aside id="tree"></aside>
+
+    <!-- List view -->
     <section id="list">
       <div id="cards" class="grid"></div>
       <div id="empty" class="empty hidden">No vehicles match your filters.</div>
+    </section>
+
+    <!-- Tech-tree view -->
+    <section id="tech" class="hidden">
+      <div id="rankGrid" class="rank-grid"></div>
+      <svg id="wires" class="wires"></svg>
     </section>
   </main>
 
@@ -50,6 +65,14 @@
         <span class="nation"></span> • <span class="rank"></span> • <span class="notes"></span>
       </div>
     </article>
+  </template>
+
+  <template id="node-tpl">
+    <div class="node-mini">
+      <div class="nm-thumb"><img alt="" loading="lazy" /></div>
+      <div class="nm-name"></div>
+      <div class="nm-meta"><span class="nm-class"></span> • <span class="nm-br"></span></div>
+    </div>
   </template>
 
   <footer>
