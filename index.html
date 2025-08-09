@@ -56,410 +56,155 @@
     <small>Unofficial fan demo for browsing. Data & images © Gaijin (War Thunder wiki). This is not affiliated with Gaijin.</small>
   </footer>
 
+  <!-- Single, unique embedded data blocks -->
   <script id="data-vehicles" type="application/json">[
-  {
-    "id": "m4a1",
-    "name": "M4A1 (Sherman)",
-    "nation": "usa",
-    "class": "medium",
-    "br": "3.7",
-    "rank": "II",
-    "notes": "Workhorse medium",
-    "image": "https://old-wiki.warthunder.com/images/thumb/a/a6/GarageImage_M4A1.jpg/800px-GarageImage_M4A1.jpg"
-  },
-  {
-    "id": "m26",
-    "name": "M26 Pershing",
-    "nation": "usa",
-    "class": "medium",
-    "br": "6.3",
-    "rank": "IV",
-    "notes": "90 mm M3 gun",
-    "image": "https://old-wiki.warthunder.com/images/thumb/4/43/GarageImage_M26.jpg/800px-GarageImage_M26.jpg"
-  },
-  {
-    "id": "m1_abrams",
-    "name": "M1 Abrams",
-    "nation": "usa",
-    "class": "mbt",
-    "br": "10.0",
-    "rank": "VI",
-    "notes": "105 mm M68A1",
-    "image": "https://old-wiki.warthunder.com/images/thumb/d/da/GarageImage_M1_Abrams.jpg/800px-GarageImage_M1_Abrams.jpg"
-  },
-  {
-    "id": "m18_premium",
-    "name": "M18 Hellcat (Premium)",
-    "nation": "usa",
-    "class": "td",
-    "br": "5.3",
-    "rank": "III",
-    "notes": "Premium variant",
-    "image": "https://old-wiki.warthunder.com/images/thumb/a/a5/GarageImage_M18_GMC.jpg/800px-GarageImage_M18_GMC.jpg"
-  },
-  {
-    "id": "m36_gmc",
-    "name": "M36 GMC",
-    "nation": "usa",
-    "class": "td",
-    "br": "5.7",
-    "rank": "IV",
-    "notes": "90 mm slugger",
-    "image": "https://old-wiki.warthunder.com/images/thumb/3/32/GarageImage_M36_GMC.jpg/800px-GarageImage_M36_GMC.jpg"
-  },
-  {
-    "id": "xm8_ags",
-    "name": "XM8 AGS",
-    "nation": "usa",
-    "class": "light",
-    "br": "9.3",
-    "rank": "VI",
-    "notes": "Event reward (gift)",
-    "image": ""
-  },
-  {
-    "id": "m1128_wolfpack",
-    "name": "M1128 Wolfpack (Premium)",
-    "nation": "usa",
-    "class": "light",
-    "br": "10.0",
-    "rank": "VI",
-    "notes": "Stryker MGS premium (Apex Predators)",
-    "image": ""
-  },
-  {
-    "id": "m42_duster",
-    "name": "M42 Duster",
-    "nation": "usa",
-    "class": "spaa",
-    "br": "4.0",
-    "rank": "IV",
-    "notes": "Twin 40 mm Bofors",
-    "image": "https://old-wiki.warthunder.com/images/thumb/3/31/GarageImage_M42.jpg/800px-GarageImage_M42.jpg"
-  },
-  {
-    "id": "f86f2",
-    "name": "F-86F-2 Sabre",
-    "nation": "usa",
-    "class": "fighter",
-    "br": "9.0",
-    "rank": "V",
-    "notes": "4\u00d7 20 mm T-160",
-    "image": "https://old-wiki.warthunder.com/images/thumb/0/0f/GarageImage_F-86F-2.jpg/800px-GarageImage_F-86F-2.jpg"
-  },
-  {
-    "id": "a2d1",
-    "name": "A2D-1 (Premium)",
-    "nation": "usa",
-    "class": "attacker",
-    "br": "7.0",
-    "rank": "IV",
-    "notes": "Premium turboprop CAS",
-    "image": "https://old-wiki.warthunder.com/images/thumb/7/74/GarageImage_A2D-1.jpg/800px-GarageImage_A2D-1.jpg"
-  },
-  {
-    "id": "t_64bv",
-    "name": "T-64BV",
-    "nation": "ussr",
-    "class": "mbt",
-    "br": "9.3",
-    "rank": "VI",
-    "notes": "(placeholder)",
-    "image": ""
-  },
-  {
-    "id": "leopard1",
-    "name": "Leopard I",
-    "nation": "germany",
-    "class": "mbt",
-    "br": "7.3",
-    "rank": "V",
-    "notes": "(placeholder)",
-    "image": ""
-  }
-]</script>
-<script id="data-nations" type="application/json">[
-  {
-    "id": "usa",
-    "name": "USA"
-  },
-  {
-    "id": "ussr",
-    "name": "USSR"
-  },
-  {
-    "id": "germany",
-    "name": "Germany"
-  },
-  {
-    "id": "uk",
-    "name": "Britain"
-  },
-  {
-    "id": "japan",
-    "name": "Japan"
-  },
-  {
-    "id": "italy",
-    "name": "Italy"
-  },
-  {
-    "id": "france",
-    "name": "France"
-  },
-  {
-    "id": "china",
-    "name": "China"
-  },
-  {
-    "id": "sweden",
-    "name": "Sweden"
-  },
-  {
-    "id": "israel",
-    "name": "Israel"
-  }
-]</script>
-<script id="data-classes" type="application/json">[
-  {
-    "id": "light",
-    "name": "Light Tank"
-  },
-  {
-    "id": "medium",
-    "name": "Medium Tank"
-  },
-  {
-    "id": "heavy",
-    "name": "Heavy Tank"
-  },
-  {
-    "id": "td",
-    "name": "Tank Destroyer"
-  },
-  {
-    "id": "spaa",
-    "name": "SPAA"
-  },
-  {
-    "id": "mbt",
-    "name": "MBT"
-  },
-  {
-    "id": "fighter",
-    "name": "Fighter"
-  },
-  {
-    "id": "attacker",
-    "name": "Attacker / Strike"
-  },
-  {
-    "id": "bomber",
-    "name": "Bomber"
-  }
-]</script>
-<script id="data-vehicles" type="application/json">[
-  {
-    "id": "m4a1",
-    "name": "M4A1 (Sherman)",
-    "nation": "usa",
-    "class": "medium",
-    "br": "3.7",
-    "rank": "II",
-    "notes": "Workhorse medium",
-    "image": "https://old-wiki.warthunder.com/images/thumb/a/a6/GarageImage_M4A1.jpg/800px-GarageImage_M4A1.jpg"
-  },
-  {
-    "id": "m26",
-    "name": "M26 Pershing",
-    "nation": "usa",
-    "class": "medium",
-    "br": "6.3",
-    "rank": "IV",
-    "notes": "90 mm M3 gun",
-    "image": "https://old-wiki.warthunder.com/images/thumb/4/43/GarageImage_M26.jpg/800px-GarageImage_M26.jpg"
-  },
-  {
-    "id": "m1_abrams",
-    "name": "M1 Abrams",
-    "nation": "usa",
-    "class": "mbt",
-    "br": "10.0",
-    "rank": "VI",
-    "notes": "105 mm M68A1",
-    "image": "https://old-wiki.warthunder.com/images/thumb/d/da/GarageImage_M1_Abrams.jpg/800px-GarageImage_M1_Abrams.jpg"
-  },
-  {
-    "id": "m18_premium",
-    "name": "M18 Hellcat (Premium)",
-    "nation": "usa",
-    "class": "td",
-    "br": "5.3",
-    "rank": "III",
-    "notes": "Premium variant",
-    "image": "https://old-wiki.warthunder.com/images/thumb/a/a5/GarageImage_M18_GMC.jpg/800px-GarageImage_M18_GMC.jpg"
-  },
-  {
-    "id": "m36_gmc",
-    "name": "M36 GMC",
-    "nation": "usa",
-    "class": "td",
-    "br": "5.7",
-    "rank": "IV",
-    "notes": "90 mm slugger",
-    "image": "https://old-wiki.warthunder.com/images/thumb/3/32/GarageImage_M36_GMC.jpg/800px-GarageImage_M36_GMC.jpg"
-  },
-  {
-    "id": "xm8_ags",
-    "name": "XM8 AGS",
-    "nation": "usa",
-    "class": "light",
-    "br": "9.3",
-    "rank": "VI",
-    "notes": "Event reward (gift)",
-    "image": ""
-  },
-  {
-    "id": "m1128_wolfpack",
-    "name": "M1128 Wolfpack (Premium)",
-    "nation": "usa",
-    "class": "light",
-    "br": "10.0",
-    "rank": "VI",
-    "notes": "Stryker MGS premium (Apex Predators)",
-    "image": ""
-  },
-  {
-    "id": "m42_duster",
-    "name": "M42 Duster",
-    "nation": "usa",
-    "class": "spaa",
-    "br": "4.0",
-    "rank": "IV",
-    "notes": "Twin 40 mm Bofors",
-    "image": "https://old-wiki.warthunder.com/images/thumb/3/31/GarageImage_M42.jpg/800px-GarageImage_M42.jpg"
-  },
-  {
-    "id": "f86f2",
-    "name": "F-86F-2 Sabre",
-    "nation": "usa",
-    "class": "fighter",
-    "br": "9.0",
-    "rank": "V",
-    "notes": "4\u00d7 20 mm T-160",
-    "image": "https://old-wiki.warthunder.com/images/thumb/0/0f/GarageImage_F-86F-2.jpg/800px-GarageImage_F-86F-2.jpg"
-  },
-  {
-    "id": "a2d1",
-    "name": "A2D-1 (Premium)",
-    "nation": "usa",
-    "class": "attacker",
-    "br": "7.0",
-    "rank": "IV",
-    "notes": "Premium turboprop CAS",
-    "image": "https://old-wiki.warthunder.com/images/thumb/7/74/GarageImage_A2D-1.jpg/800px-GarageImage_A2D-1.jpg"
-  },
-  {
-    "id": "t_64bv",
-    "name": "T-64BV",
-    "nation": "ussr",
-    "class": "mbt",
-    "br": "9.3",
-    "rank": "VI",
-    "notes": "(placeholder)",
-    "image": ""
-  },
-  {
-    "id": "leopard1",
-    "name": "Leopard I",
-    "nation": "germany",
-    "class": "mbt",
-    "br": "7.3",
-    "rank": "V",
-    "notes": "(placeholder)",
-    "image": ""
-  }
-]</script>
-<script id="data-nations" type="application/json">[
-  {
-    "id": "usa",
-    "name": "USA"
-  },
-  {
-    "id": "ussr",
-    "name": "USSR"
-  },
-  {
-    "id": "germany",
-    "name": "Germany"
-  },
-  {
-    "id": "uk",
-    "name": "Britain"
-  },
-  {
-    "id": "japan",
-    "name": "Japan"
-  },
-  {
-    "id": "italy",
-    "name": "Italy"
-  },
-  {
-    "id": "france",
-    "name": "France"
-  },
-  {
-    "id": "china",
-    "name": "China"
-  },
-  {
-    "id": "sweden",
-    "name": "Sweden"
-  },
-  {
-    "id": "israel",
-    "name": "Israel"
-  }
-]</script>
-<script id="data-classes" type="application/json">[
-  {
-    "id": "light",
-    "name": "Light Tank"
-  },
-  {
-    "id": "medium",
-    "name": "Medium Tank"
-  },
-  {
-    "id": "heavy",
-    "name": "Heavy Tank"
-  },
-  {
-    "id": "td",
-    "name": "Tank Destroyer"
-  },
-  {
-    "id": "spaa",
-    "name": "SPAA"
-  },
-  {
-    "id": "mbt",
-    "name": "MBT"
-  },
-  {
-    "id": "fighter",
-    "name": "Fighter"
-  },
-  {
-    "id": "attacker",
-    "name": "Attacker / Strike"
-  },
-  {
-    "id": "bomber",
-    "name": "Bomber"
-  }
-]</script>
-<script src="app.js"></script>
+    {
+      "id": "m4a1",
+      "name": "M4A1 (Sherman)",
+      "nation": "usa",
+      "class": "medium",
+      "br": "3.7",
+      "rank": "II",
+      "notes": "Workhorse medium",
+      "image": "https://old-wiki.warthunder.com/images/thumb/a/a6/GarageImage_M4A1.jpg/800px-GarageImage_M4A1.jpg"
+    },
+    {
+      "id": "m26",
+      "name": "M26 Pershing",
+      "nation": "usa",
+      "class": "medium",
+      "br": "6.3",
+      "rank": "IV",
+      "notes": "90 mm M3 gun",
+      "image": "https://old-wiki.warthunder.com/images/thumb/4/43/GarageImage_M26.jpg/800px-GarageImage_M26.jpg"
+    },
+    {
+      "id": "m1_abrams",
+      "name": "M1 Abrams",
+      "nation": "usa",
+      "class": "mbt",
+      "br": "10.0",
+      "rank": "VI",
+      "notes": "105 mm M68A1",
+      "image": "https://old-wiki.warthunder.com/images/thumb/d/da/GarageImage_M1_Abrams.jpg/800px-GarageImage_M1_Abrams.jpg"
+    },
+    {
+      "id": "m18_premium",
+      "name": "M18 Hellcat (Premium)",
+      "nation": "usa",
+      "class": "td",
+      "br": "5.3",
+      "rank": "III",
+      "notes": "Premium variant",
+      "image": "https://old-wiki.warthunder.com/images/thumb/a/a5/GarageImage_M18_GMC.jpg/800px-GarageImage_M18_GMC.jpg"
+    },
+    {
+      "id": "m36_gmc",
+      "name": "M36 GMC",
+      "nation": "usa",
+      "class": "td",
+      "br": "5.7",
+      "rank": "IV",
+      "notes": "90 mm slugger",
+      "image": "https://old-wiki.warthunder.com/images/thumb/3/32/GarageImage_M36_GMC.jpg/800px-GarageImage_M36_GMC.jpg"
+    },
+    {
+      "id": "xm8_ags",
+      "name": "XM8 AGS",
+      "nation": "usa",
+      "class": "light",
+      "br": "9.3",
+      "rank": "VI",
+      "notes": "Event reward (gift)",
+      "image": "https://old-wiki.warthunder.com/images/thumb/9/93/GarageImage_XM8.jpg/800px-GarageImage_XM8.jpg"
+    },
+    {
+      "id": "m1128_wolfpack",
+      "name": "M1128 Wolfpack (Premium)",
+      "nation": "usa",
+      "class": "light",
+      "br": "10.0",
+      "rank": "VI",
+      "notes": "Stryker MGS premium (Apex Predators)",
+      "image": "https://old-wiki.warthunder.com/images/thumb/6/61/GarageImage_M1128_Wolfpack.jpg/800px-GarageImage_M1128_Wolfpack.jpg"
+    },
+    {
+      "id": "m42_duster",
+      "name": "M42 Duster",
+      "nation": "usa",
+      "class": "spaa",
+      "br": "4.0",
+      "rank": "IV",
+      "notes": "Twin 40 mm Bofors",
+      "image": "https://old-wiki.warthunder.com/images/thumb/3/31/GarageImage_M42.jpg/800px-GarageImage_M42.jpg"
+    },
+    {
+      "id": "f86f2",
+      "name": "F-86F-2 Sabre",
+      "nation": "usa",
+      "class": "fighter",
+      "br": "9.0",
+      "rank": "V",
+      "notes": "4× 20 mm T-160",
+      "image": "https://old-wiki.warthunder.com/images/thumb/0/0f/GarageImage_F-86F-2.jpg/800px-GarageImage_F-86F-2.jpg"
+    },
+    {
+      "id": "a2d1",
+      "name": "A2D-1 (Premium)",
+      "nation": "usa",
+      "class": "attacker",
+      "br": "7.0",
+      "rank": "IV",
+      "notes": "Premium turboprop CAS",
+      "image": "https://old-wiki.warthunder.com/images/thumb/7/74/GarageImage_A2D-1.jpg/800px-GarageImage_A2D-1.jpg"
+    },
+    {
+      "id": "t_64bv",
+      "name": "T-64BV",
+      "nation": "ussr",
+      "class": "mbt",
+      "br": "9.3",
+      "rank": "VI",
+      "notes": "(placeholder)",
+      "image": ""
+    },
+    {
+      "id": "leopard1",
+      "name": "Leopard I",
+      "nation": "germany",
+      "class": "mbt",
+      "br": "7.3",
+      "rank": "V",
+      "notes": "(placeholder)",
+      "image": ""
+    }
+  ]</script>
+
+  <script id="data-nations" type="application/json">[
+    { "id": "usa", "name": "USA" },
+    { "id": "ussr", "name": "USSR" },
+    { "id": "germany", "name": "Germany" },
+    { "id": "uk", "name": "Britain" },
+    { "id": "japan", "name": "Japan" },
+    { "id": "italy", "name": "Italy" },
+    { "id": "france", "name": "France" },
+    { "id": "china", "name": "China" },
+    { "id": "sweden", "name": "Sweden" },
+    { "id": "israel", "name": "Israel" }
+  ]</script>
+
+  <script id="data-classes" type="application/json">[
+    { "id": "light", "name": "Light Tank" },
+    { "id": "medium", "name": "Medium Tank" },
+    { "id": "heavy", "name": "Heavy Tank" },
+    { "id": "td", "name": "Tank Destroyer" },
+    { "id": "spaa", "name": "SPAA" },
+    { "id": "mbt", "name": "MBT" },
+    { "id": "fighter", "name": "Fighter" },
+    { "id": "attacker", "name": "Attacker / Strike" },
+    { "id": "bomber", "name": "Bomber" }
+  ]</script>
+
+  <script src="app.js"></script>
 </body>
 </html>
