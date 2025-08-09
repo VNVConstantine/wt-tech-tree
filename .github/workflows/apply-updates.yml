@@ -1,0 +1,57 @@
+name: Apply updates from issue comments
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: contains(github.event.comment.body, '/apply-update')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Extract payload block
+        id: payload
+        run: |
+          python - << 'PY'
+import os, sys, re, base64, json, pathlib
+body = """${{ github.event.comment.body }}"""
+m = re.search(r"```update\n(.*?)\n```", body, re.S)
+if not m:
+    print("::error::No ```update code block found")
+    sys.exit(1)
+payload = json.loads(m.group(1))
+# payload format: {"files": [{"path":"index.html","content_b64":"..."}], "message":"...","branch":"main","pr":false}
+# Write files
+for f in payload["files"]:
+    p = pathlib.Path(f["path"])
+    p.parent.mkdir(parents=True, exist_ok=True)
+    data = base64.b64decode(f["content_b64"].encode())
+    p.write_bytes(data)
+# Save message/branch/pr flags for next steps
+open("commit_msg.txt","w").write(payload.get("message","Update via /apply-update"))
+open("branch.txt","w").write(payload.get("branch","main"))
+open("pr.txt","w").write(str(payload.get("pr", False)))
+PY
+
+      - name: Commit changes
+        run: |
+          BRANCH=$(cat branch.txt)
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B "$BRANCH"
+          git add -A
+          git commit -m "$(cat commit_msg.txt)" || echo "No changes to commit"
+
+      - name: Push
+        run: |
+          BRANCH=$(cat branch.txt)
+          git push origin "$BRANCH"
+
+      - name: Open PR (optional)
+        if: ${{ contains(fromJson(steps.payload.outputs || '{}'), 'dummy') && false }}
+        run: echo "PR step disabled; set payload.pr=true and implement PR creation if desired."
