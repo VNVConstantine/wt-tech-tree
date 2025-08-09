@@ -17,11 +17,29 @@ const FALLBACK_SVG = `data:image/svg+xml;utf8,${encodeURIComponent(`
   </svg>
 `)}`;
 
+// War Thunder wiki thumbnails (we’ll keep adding here)
+const IMAGE_OVERRIDES = {
+  // USA ground
+  "m4a1": "https://old-wiki.warthunder.com/images/thumb/a/a6/GarageImage_M4A1.jpg/800px-GarageImage_M4A1.jpg",
+  "m26": "https://old-wiki.warthunder.com/images/thumb/4/43/GarageImage_M26.jpg/800px-GarageImage_M26.jpg",
+  "m1_abrams": "https://old-wiki.warthunder.com/images/thumb/d/da/GarageImage_M1_Abrams.jpg/800px-GarageImage_M1_Abrams.jpg",
+  "m36_gmc": "https://old-wiki.warthunder.com/images/thumb/3/32/GarageImage_M36_GMC.jpg/800px-GarageImage_M36_GMC.jpg",
+  "m18_premium": "https://old-wiki.warthunder.com/images/thumb/a/a5/GarageImage_M18_GMC.jpg/800px-GarageImage_M18_GMC.jpg",
+  "m42_duster": "https://old-wiki.warthunder.com/images/thumb/3/31/GarageImage_M42.jpg/800px-GarageImage_M42.jpg",
+
+  // USA air
+  "f86f2": "https://old-wiki.warthunder.com/images/thumb/0/0f/GarageImage_F-86F-2.jpg/800px-GarageImage_F-86F-2.jpg",
+  "a2d1": "https://old-wiki.warthunder.com/images/thumb/7/74/GarageImage_A2D-1.jpg/800px-GarageImage_A2D-1.jpg",
+
+  // TODO: add these two next (I’ll send you the URLs)
+  "xm8_ags": "",
+  "m1128_wolfpack": ""
+};
+
 let VEHICLES = [];
 let NATIONS = [];
 let CLASSES = [];
 const BR_ORDER = ["1.0","1.3","1.7","2.0","2.3","2.7","3.0","3.3","3.7","4.0","4.3","4.7","5.0","5.3","5.7","6.0","6.3","6.7","7.0","7.3","7.7","8.0","8.3","8.7","9.0","9.3","9.7","10.0","10.3","10.7","11.0","11.3","11.7","12.0"];
-
 
 async function loadData(){
   const vEl = document.getElementById('data-vehicles');
@@ -30,32 +48,18 @@ async function loadData(){
   VEHICLES = JSON.parse(vEl.textContent);
   NATIONS  = JSON.parse(nEl.textContent);
   CLASSES  = JSON.parse(cEl.textContent);
+
+  // Apply image overrides
+  VEHICLES.forEach(v => {
+    if (IMAGE_OVERRIDES[v.id]) v.image = IMAGE_OVERRIDES[v.id];
+  });
+
   buildFilters();
   // Auto-select USA so content shows immediately
   const usaChip = Array.from(document.querySelectorAll('#nation-filters .chip input')).find(i=>i.value==='usa');
   if (usaChip && !usaChip.checked) { usaChip.checked = true; usaChip.parentElement.classList.add('active'); }
   render();
 }
-  } catch (e) { console.warn('Embedded parse failed', e); }
-
-  // Fallback to fetch if needed
-  if (!VEHICLES?.length || !NATIONS?.length || !CLASSES?.length) {
-    [VEHICLES,NATIONS,CLASSES] = await Promise.all([
-      fetch('data/vehicles.json').then(r=>r.json()),
-      fetch('data/nations.json').then(r=>r.json()),
-      fetch('data/classes.json').then(r=>r.json())
-    ]);
-  }
-  buildFilters();
-  // Auto-activate USA chip on first load so users see content immediately
-  const usaChip = Array.from(document.querySelectorAll('#nation-filters .chip input')).find(i=>i.value==='usa');
-  if (usaChip && !usaChip.checked) {
-    usaChip.checked = true;
-    usaChip.parentElement.classList.add('active');
-  }
-  render();
-}
-
 
 function buildFilters(){
   // Nations (chips with multi-select)
@@ -80,7 +84,6 @@ function buildFilters(){
   // BR chips
   const brWrap = $('#br-filters');
   brWrap.innerHTML = '';
-  // show a reasonable subset used in our demo + allow expand
   const brs = Array.from(new Set(VEHICLES.map(v=>v.br))).sort((a,b)=>BR_ORDER.indexOf(a)-BR_ORDER.indexOf(b));
   brs.forEach(br=>{
     const chip = document.createElement('label');
@@ -119,14 +122,13 @@ function render(){
   list.forEach(v=> cards.appendChild(card(v)));
   $('#empty').classList.toggle('hidden', list.length>0);
 
-  // Build simple tree (by rank)
+  // Simple rank list (acts like quick filter)
   const tree = $('#tree');
   const byRank = groupBy(list, x=>x.rank);
   tree.innerHTML = '<h3>Ranks</h3>' + Object.keys(byRank).sort().map(r=>{
     const count = byRank[r].length;
     return `<div class="node" data-rank="${r}">${r} <span style="color:var(--muted)">(${count})</span></div>`;
   }).join('');
-  // Clicking a node filters by rank via search (quick and dirty)
   tree.querySelectorAll('.node').forEach(n=>{
     n.addEventListener('click', ()=>{
       $('#search').value = n.dataset.rank;
@@ -139,7 +141,7 @@ function card(v){
   const tpl = document.getElementById('card-tpl');
   const node = tpl.content.firstElementChild.cloneNode(true);
   const img = node.querySelector('.thumb');
-  img.src = v.image || `assets/${v.id}.png`;
+  img.src = v.image || FALLBACK_SVG;
   img.onerror = () => img.src = FALLBACK_SVG;
   img.alt = v.name;
   node.querySelector('.name').textContent = v.name;
