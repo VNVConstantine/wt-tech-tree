@@ -1,6 +1,7 @@
-*{box-sizing:border-box} :root{
+*{box-sizing:border-box}
+:root{
   --bg:#0f1115; --bg2:#141823; --panel:#171b26; --ink:#e9eef6; --muted:#9fb1cc;
-  --brand:#5aa2ff; --chip:#24304a; --tag:#0e3a70; --accent:#1f6feb;
+  --brand:#5aa2ff; --chip:#24304a; --tag:#0e3a70; --accent:#1f6feb; --wire:#365a9c;
 }
 html,body{height:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
@@ -16,12 +17,17 @@ select{padding:8px 10px;border-radius:10px;background:#0b0e14;color:var(--ink);b
 .chip{padding:6px 10px;border-radius:999px;background:var(--chip);color:var(--ink);border:1px solid #2d3b58;cursor:pointer;user-select:none}
 .chip input{display:none}
 .chip.active{background:var(--brand);border-color:transparent;color:#081018}
+.view-toggle{display:flex;gap:6px}
+.tab{padding:6px 10px;border:1px solid #2d3b58;background:#0b0e14;color:var(--ink);border-radius:999px;cursor:pointer}
+.tab.active{background:var(--brand);border-color:transparent;color:#081018}
+
 main{display:grid;grid-template-columns:260px 1fr;min-height:calc(100vh - 140px)}
 @media (max-width: 980px){ main{grid-template-columns:1fr} aside#tree{display:none} }
 aside#tree{border-right:1px solid #1f2838;background:var(--panel);padding:12px;overflow:auto}
 #tree h3{margin:8px 6px;font-size:13px;color:var(--muted)}
 #tree .node{padding:8px 10px;margin:6px;border-radius:8px;background:#0f1420;border:1px solid #25314a;cursor:pointer}
 #tree .node:hover{border-color:var(--brand)}
+
 section#list{padding:16px;min-width:0}
 .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
 .card{background:var(--panel);border:1px solid #283248;border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
@@ -34,3 +40,32 @@ section#list{padding:16px;min-width:0}
 .empty{padding:48px;color:var(--muted);text-align:center}
 .hidden{display:none}
 footer{border-top:1px solid #1f2838;color:var(--muted);padding:10px 16px;text-align:center}
+
+/* --- Tech-tree view --- */
+#tech{position:relative;padding:16px;overflow:auto}
+.rank-grid{
+  position:relative;
+  display:grid;
+  grid-template-columns: repeat(7, minmax(220px, 1fr));
+  gap:16px;
+}
+.rank-col{background:var(--panel);border:1px solid #283248;border-radius:12px;padding:10px;min-height:200px}
+.rank-col h4{margin:0 0 8px 2px;color:var(--muted);font-weight:600}
+.node-mini{
+  position:relative;display:grid;grid-template-columns:56px 1fr;gap:8px;
+  align-items:center;background:#0f1420;border:1px solid #25314a;border-radius:10px;padding:6px 8px;margin:8px 0;
+}
+.nm-thumb{width:56px;height:40px;border-radius:6px;overflow:hidden;background:#0b0e14;border:1px solid #27314b}
+.nm-thumb img{width:100%;height:100%;object-fit:cover}
+.nm-name{font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nm-meta{font-size:11px;color:var(--muted)}
+.node-mini:hover{border-color:var(--brand);}
+
+.wires{
+  position:absolute; inset:0 0 0 260px; /* accounts for aside width on desktop */
+  pointer-events:none;
+}
+@media (max-width:980px){
+  .wires{inset:0}
+}
+path.wire{fill:none;stroke:var(--wire);stroke-width:2;opacity:.9}
