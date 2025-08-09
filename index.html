@@ -82,6 +82,16 @@
   <!-- Single, unique embedded data blocks -->
   <script id="data-vehicles" type="application/json">[
     {
+  "id": "m18",
+  "name": "M18 Hellcat",
+  "nation": "usa",
+  "class": "td",
+  "br": "5.3",
+  "rank": "III",
+  "notes": "Standard tech-tree Hellcat",
+  "image": "https://old-wiki.warthunder.com/images/thumb/a/a5/GarageImage_M18_GMC.jpg/800px-GarageImage_M18_GMC.jpg"
+    }    
+    {
       "id": "m4a1",
       "name": "M4A1 (Sherman)",
       "nation": "usa",
@@ -119,6 +129,7 @@
       "br": "5.3",
       "rank": "III",
       "notes": "Premium variant",
+      "stackOf": "m18"
       "image": "https://old-wiki.warthunder.com/images/thumb/a/a5/GarageImage_M18_GMC.jpg/800px-GarageImage_M18_GMC.jpg"
     },
     {
@@ -227,7 +238,22 @@
     { "id": "attacker", "name": "Attacker / Strike" },
     { "id": "bomber", "name": "Bomber" }
   ]</script>
+<script id="data-links" type="application/json">
+[
+  { "from": "m4a1", "to": "m26" },
+  { "from": "m26",  "to": "m1_abrams" },
 
+  { "from": "m18",        "to": "m36_gmc" },
+  { "from": "m36_gmc",    "to": "xm8_ags" },
+  { "from": "xm8_ags",    "to": "m1128_wolfpack" },
+
+  { "from": "m42_duster", "to": "m1_abrams" },     
+
+  { "from": "f86f2", "to": "a2d1" }                
+
+  /* Add/adjust links to match in-game research as you expand the set */
+]
+</script>
   <script src="app.js"></script>
 </body>
 </html>
